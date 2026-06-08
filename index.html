@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>🏔️ 2026端午恩施 · 兄弟自然疗愈之旅</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root {
+    --bg:        #f7f5f0;
+    --sidebar-bg:#fefcf9;
+    --card-bg:   #ffffff;
+    --text:      #2d3436;
+    --text-muted:#7f8c8d;
+    --accent:    #2d8a4e;
+    --accent2:   #6c5ce7;
+    --accent3:   #00b894;
+    --gold:      #c8953e;
+    --red:       #d63031;
+    --border:    #e8e2d8;
+    --shadow:    0 1px 4px rgba(0,0,0,0.05), 0 2px 12px rgba(0,0,0,0.04);
+    --shadow-lg: 0 4px 20px rgba(0,0,0,0.07), 0 1px 6px rgba(0,0,0,0.04);
+    --day1: #e6a817;
+    --day2: #d63031;
+    --day3: #0984e3;
+    --day4: #6c5ce7;
+    --day5: #00b894;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh; display: flex; overflow: hidden;
+  }
+
+  /* ===== SIDEBAR ===== */
+  #sidebar {
+    width: 480px; min-width: 480px; height: 100vh;
+    background: var(--sidebar-bg);
+    display: flex; flex-direction: column;
+    border-right: 1px solid var(--border);
+    box-shadow: 2px 0 20px rgba(0,0,0,0.04);
+    z-index: 10;
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #f0ebe0 0%, #fefcf9 40%, #f0f5f0 100%);
+    padding: 28px 28px 22px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  #sidebar-header h1 {
+    font-size: 22px; font-weight: 800; letter-spacing: 0.5px;
+    color: #1a3c2a;
+    margin-bottom: 6px;
+  }
+  #sidebar-header .subtitle {
+    font-size: 12px; color: var(--text-muted);
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  #sidebar-header .subtitle span {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 6px; padding: 3px 10px;
+    white-space: nowrap; font-size: 11px;
+  }
+  #tab-bar {
+    display: flex; border-bottom: 1px solid var(--border); flex-shrink: 0;
+    background: #fff;
+  }
+  .tab {
+    flex: 1; text-align: center; padding: 13px 8px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    color: var(--text-muted); border-bottom: 2px solid transparent;
+    transition: all .2s; letter-spacing: 0.3px;
+  }
+  .tab:hover { color: var(--text); background: #faf8f5; }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  #scroll-area {
+    flex: 1; overflow-y: auto; padding: 18px 22px;
+  }
+  #scroll-area::-webkit-scrollbar { width: 5px; }
+  #scroll-area::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+
+  /* ===== DAY CARDS ===== */
+  .day-card {
+    background: var(--card-bg); border-radius: 14px;
+    padding: 22px; margin-bottom: 16px;
+    border-left: 5px solid var(--accent);
+    box-shadow: var(--shadow);
+    position: relative; transition: box-shadow 0.2s;
+  }
+  .day-card:hover { box-shadow: var(--shadow-lg); }
+  .day-card.day1 { border-left-color: var(--day1); }
+  .day-card.day2 { border-left-color: var(--day2); }
+  .day-card.day3 { border-left-color: var(--day3); }
+  .day-card.day4 { border-left-color: var(--day4); }
+  .day-card.day5 { border-left-color: var(--day5); }
+  .day-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+  }
+  .day-num {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .day1 .day-num { background: var(--day1); }
+  .day2 .day-num { background: var(--day2); }
+  .day3 .day-num { background: var(--day3); }
+  .day4 .day-num { background: var(--day4); }
+  .day5 .day-num { background: var(--day5); }
+  .day-title { font-size: 15px; font-weight: 700; color: #1a3c2a; }
+  .day-date { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+  .timeline { list-style: none; }
+  .timeline li {
+    display: flex; gap: 10px; padding: 5px 0;
+    font-size: 13px; line-height: 1.6; align-items: baseline;
+  }
+  .timeline .time {
+    color: var(--accent); font-weight: 700; font-size: 11px;
+    min-width: 44px; text-align: right; flex-shrink: 0;
+    font-family: "SF Mono", "Consolas", "Menlo", monospace;
+  }
+  .timeline .desc { flex: 1; color: var(--text); }
+  .timeline .desc em { color: var(--accent2); font-style: normal; font-weight: 600; }
+  .timeline .desc strong { color: var(--gold); }
+
+  .tag {
+    display: inline-block; font-size: 10px; padding: 2px 7px;
+    border-radius: 8px; margin-right: 3px; font-weight: 600;
+    letter-spacing: 0.2px; vertical-align: middle;
+  }
+  .tag-flight  { background: #e3f2fd; color: #1565c0; }
+  .tag-hotel   { background: #ede7f6; color: #6c5ce7; }
+  .tag-food    { background: #fff8e1; color: #c8953e; }
+  .tag-scenic  { background: #e0f2f1; color: #00897b; }
+  .tag-massage { background: #fce4ec; color: #c62828; }
+  .tag-bar     { background: #fff3e0; color: #e65100; }
+
+  /* ===== BUDGET TABLE ===== */
+  .budget-table {
+    width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0;
+    background: #fff; border-radius: 10px; overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .budget-table th, .budget-table td {
+    padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border);
+  }
+  .budget-table th {
+    color: var(--text-muted); font-weight: 600; font-size: 10px;
+    text-transform: uppercase; background: #faf8f5; letter-spacing: 0.5px;
+  }
+  .budget-table .total-row {
+    font-weight: 800; color: var(--accent); font-size: 16px;
+    background: #f0f8f2;
+  }
+  .budget-table .total-row td { border-top: 2px solid var(--accent); border-bottom: none; }
+
+  /* ===== INFO BOXES ===== */
+  .info-box {
+    background: #faf8f5; border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; margin: 14px 0; font-size: 13px;
+  }
+  .info-box h4 { color: #1a3c2a; margin-bottom: 8px; font-size: 14px; }
+  .info-box li { margin: 3px 0; }
+
+  .massage-card {
+    background: linear-gradient(135deg, #fdf2f8, #faf5ff);
+    border: 1px solid #e8d5e0; border-radius: 12px;
+    padding: 18px; margin: 14px 0;
+  }
+  .massage-card h4 { color: #b4005e; margin-bottom: 10px; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+  .massage-item {
+    background: #fff; border-radius: 10px; padding: 13px 15px; margin: 8px 0;
+    border-left: 3px solid #e91e63;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .massage-item h5 { font-size: 13px; color: #880e4f; margin-bottom: 4px; }
+  .massage-item .meta { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+  .massage-item .meta strong { color: #c62828; }
+
+  /* ===== HOTEL CARD ===== */
+  .hotel-card {
+    background: #fff; border-radius: 12px; padding: 16px; margin: 8px 0;
+    border: 1px solid var(--border); box-shadow: var(--shadow);
+    display: flex; gap: 14px; align-items: center;
+  }
+  .hotel-card .rank {
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px; color: #fff; flex-shrink: 0;
+  }
+  .hotel-card .info { flex: 1; }
+  .hotel-card .info h4 { font-size: 14px; margin-bottom: 2px; }
+
+  /* ===== MAP ===== */
+  #map-container { flex: 1; position: relative; }
+  #map { width: 100%; height: 100%; }
+  .map-overlay {
+    position: absolute; background: rgba(255,255,255,0.94);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; z-index: 1000;
+    box-shadow: var(--shadow); backdrop-filter: blur(8px);
+  }
+  .map-overlay h4 { font-size: 13px; margin-bottom: 6px; color: #1a3c2a; }
+  .map-overlay div { font-size: 12px; line-height: 1.7; color: var(--text); }
+  .flight-overlay { top: 18px; left: 18px; }
+  .legend-overlay { bottom: 28px; right: 18px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin: 3px 0; font-size: 11px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-line { width: 22px; height: 2px; flex-shrink: 0; border-radius: 1px; }
+
+  /* LEAFLET OVERRIDES */
+  .leaflet-popup-content-wrapper { border-radius: 10px; box-shadow: 0 3px 14px rgba(0,0,0,0.12); }
+  .leaflet-popup-content { font-family: inherit; font-size: 13px; margin: 10px 14px; }
+  .leaflet-popup-content strong { display: block; font-size: 14px; margin-bottom: 4px; }
+
+  @media (max-width: 900px) {
+    body { flex-direction: column; }
+    #sidebar { width: 100%; min-width: 100%; height: 55vh; }
+    #map-container { height: 45vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 密码保护层 ===== -->
+<div id="pw-overlay" style="
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(135deg,#1a3c2a 0%,#2d5a3f 40%,#1a2f1a 100%);
+  display:flex;align-items:center;justify-content:center;z-index:99999;
+">
+  <div style="text-align:center;color:#fff;max-width:360px;padding:40px">
+    <div style="font-size:64px;margin-bottom:16px">🏔️</div>
+    <h2 style="font-size:22px;font-weight:700;margin-bottom:8px">恩施兄弟之旅</h2>
+    <p style="font-size:13px;opacity:0.7;margin-bottom:28px">此页面仅限受邀兄弟查看<br>请输入密码解锁</p>
+    <input id="pw-input" type="password" placeholder="输入密码" autofocus style="
+      width:100%;padding:14px 18px;border-radius:10px;border:none;
+      font-size:16px;text-align:center;outline:none;
+      box-shadow:0 4px 20px rgba(0,0,0,0.3);
+    ">
+    <button id="pw-btn" style="
+      width:100%;margin-top:12px;padding:14px;border-radius:10px;border:none;
+      background:#c8953e;color:#fff;font-size:16px;font-weight:700;
+      cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.3);
+      transition:background 0.2s;
+    ">🔓 解锁</button>
+    <p id="pw-error" style="font-size:12px;color:#ff8a80;margin-top:12px;display:none">密码错误，再试一次</p>
+  </div>
+</div>
+<script>
+(async function(){
+  const CORRECT_HASH = '35ff3a58c9631bf47560ba377a1a4365f0830a860e794516d556be601a51d067';
+  const overlay = document.getElementById('pw-overlay');
+  const input = document.getElementById('pw-input');
+  const btn = document.getElementById('pw-btn');
+  const err = document.getElementById('pw-error');
+
+  if (sessionStorage.getItem('enshi_auth') === 'ok') { overlay.style.display='none'; return; }
+
+  async function hash(s) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function tryUnlock() {
+    const h = await hash(input.value.trim());
+    if (h === CORRECT_HASH) {
+      sessionStorage.setItem('enshi_auth','ok');
+      overlay.style.display='none';
+    } else {
+      err.style.display='block';
+      input.value='';
+      input.focus();
+    }
+  }
+  btn.addEventListener('click', tryUnlock);
+  input.addEventListener('keydown', e => { if (e.key==='Enter') tryUnlock(); });
+})();
+</script>
+
+<div id="sidebar">
+  <div id="sidebar-header">
+    <h1>🏔️ 2026端午 · 恩施兄弟之旅</h1>
+    <div class="subtitle">
+      <span>📅 6.18 – 6.22（5天4晚）</span>
+      <span>👥 3人 · ~30岁</span>
+      <span>✈️ 北京⇋恩施</span>
+      <span>💰 人均≈¥7,000</span>
+    </div>
+  </div>
+  <div id="tab-bar">
+    <div class="tab active" data-tab="itinerary">📋 每日行程</div>
+    <div class="tab" data-tab="budget">💰 预算清单</div>
+    <div class="tab" data-tab="massage">💆 按摩SPA</div>
+    <div class="tab" data-tab="tips">💡 实用贴士</div>
+  </div>
+  <div id="scroll-area"></div>
+</div>
+
+<div id="map-container">
+  <div id="map"></div>
+  <div class="map-overlay flight-overlay">
+    <h4>✈️ 航班信息</h4>
+    <div>去程 <strong>MU2460</strong> · 6/18 08:30→11:05</div>
+    <div>回程 <strong>MU2460</strong> · 6/22 16:05→18:15</div>
+    <div style="color:var(--text-muted);font-size:11px">北京大兴(PKX) ⇋ 恩施许家坪(ENH)</div>
+  </div>
+  <div class="map-overlay legend-overlay">
+    <h4>🗺️ 图例</h4>
+    <div class="legend-item"><div class="legend-dot" style="background:#d63031"></div> 景区</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#0984e3"></div> 酒店 / 机场</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e6a817"></div> 美食 / 夜市</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#c62828"></div> 按摩 / SPA</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e65100"></div> 酒吧</div>
+    <div style="margin-top:6px;font-size:10px;color:var(--text-muted)">
+      <div class="legend-item"><div class="legend-line" style="background:var(--day1)"></div> Day1</div>
+      <div class="legend-item"><div class="legend-line" style="background:var(--day2)"></div> Day2</div>
+      <div class="legend-item"><div class="legend-line" style="background:var(--day3)"></div> Day3</div>
+      <div class="legend-item"><div class="legend-line" style="background:var(--day4)"></div> Day4</div>
+      <div class="legend-item"><div class="legend-line" style="background:var(--day5)"></div> Day5</div>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+</body>
+</html>

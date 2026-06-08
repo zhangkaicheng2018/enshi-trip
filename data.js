@@ -12,6 +12,7 @@ const LOC = {
   grand_canyon:   [30.390, 109.150],
   pingshan:       [29.980, 110.050],
   suobuya:        [30.630, 109.800],
+  tenglong:       [30.280, 108.950],  // 腾龙洞(利川，Day3替代)
   xuanen:         [29.987, 109.410],
   hotel_xuanen:   [29.988, 109.412],  // 宣恩河景民宿（第4晚）
   erma_bar:       [30.282, 109.478],
@@ -48,6 +49,7 @@ const MARKERS = [
   { pos:LOC.grand_canyon,  name:'恩施大峡谷',     icon:'scenic', desc:'5A·一炷香·云龙地缝·绝壁栈道', day:2 },
   { pos:LOC.pingshan,      name:'屏山峡谷',       icon:'scenic', desc:'中国仙本那·悬浮船·蒂芙尼蓝玻璃水', day:3 },
   { pos:LOC.suobuya,       name:'梭布垭石林',     icon:'scenic', desc:'4.6亿年前海底世界·中国第二大石林', day:4 },
+  { pos:LOC.tenglong,      name:'腾龙洞(雨天备选)', icon:'scenic', desc:'亚洲最大溶洞·激光秀·卧龙吞江·恒温14-18°C', day:3 },
   { pos:LOC.tusi_city,     name:'恩施土司城',     icon:'scenic', desc:'九进堂·土司王宫·土家族历史文化', day:1 },
   // 交通/酒店
   { pos:LOC.airport,       name:'恩施许家坪机场', icon:'transit',desc:'ENH·距市区约5km·打车≈¥20' },
@@ -218,7 +220,7 @@ const content = {
   ${imgCard(IMG.grand_canyon,'恩施大峡谷 — 一炷香·绝壁栈道·云龙地缝')}
   <ul class="timeline">
     <li><span class="time">07:00</span><span class="desc"><span class="tag tag-food">早餐</span> 袁氏油香 — 恩施早餐之光，人均¥10</span></li>
-    <li><span class="time">07:30</span><span class="desc">🚗 包车前往恩施大峡谷 <strong>54km·1.5h</strong>（≈¥350/天÷3≈¥117/人）</span></li>
+    <li><span class="time">07:30</span><span class="desc">🚗 包车前往恩施大峡谷 <strong>54km·1.5h</strong>（≈¥350/天÷3≈¥117/人）<br><span style="font-size:11px;color:#ff9800">🌧️→⛅ 预报雨转多云，上午小雨不影响，雨后云海反而壮观</span></span></li>
     <li><span class="time">09:00</span><span class="desc">🏔️ <em>七星寨</em> — 一炷香·绝壁栈道·迎客松（上行索道必买，省2h爬山）</span></li>
     <li><span class="time">12:00</span><span class="desc">景区简餐（建议自带干粮，景区溢价50%）</span></li>
     <li><span class="time">13:00</span><span class="desc"><em>云龙地缝</em> — "地球最美伤痕"，瀑布+碧潭</span></li>
@@ -235,11 +237,11 @@ const content = {
     <div class="day-num">3</div>
     <div><div class="day-title">屏山峡谷 · 中国仙本那 💎</div><div class="day-date">6月20日 周六</div></div>
   </div>
-  ${imgCard(IMG.pingshan,'屏山峡谷 — 悬浮船·蒂芙尼蓝玻璃水（⚠️雨天水浑，出发前查鹤峰天气）')}
-  <div style="margin-bottom:10px;padding:8px 12px;background:#fff5f5;border-left:3px solid #f44336;border-radius:4px;font-size:12px;line-height:1.7">
-    ⚠️ <strong>天气敏感日</strong>：出发前48h查鹤峰县天气。如果中雨及以上或前1-2天刚下过大雨 → 水会变黄，"悬浮船"效果消失。
-    建议改为 <strong>腾龙洞</strong>（亚洲最大溶洞·¥170·不受雨影响）或 <strong>鹿院坪</strong>。<br>
-    详见「💡 实用贴士」→ 雨天Plan B。
+  ${imgCard(IMG.pingshan,'屏山峡谷 — ⚠️ 6/20预报雨转阴，水大概率浑浊，强烈建议改为备选方案')}
+  <div style="margin-bottom:10px;padding:10px 12px;background:#ffebee;border-left:4px solid #f44336;border-radius:4px;font-size:12px;line-height:1.7">
+    🚫 <strong>根据6月8日15天预报，6/20有雨转阴，屏山峡谷水体大概率浑浊，悬浮船效果将大打折扣。</strong><br>
+    <strong>建议改为</strong>：🕳️ <strong>腾龙洞</strong>（亚洲最大溶洞·¥170·洞内恒温14-18°C·不受雨影响·激光秀+卧龙吞江）<br>
+    如果坚持去屏山，出发前3天再复查鹤峰天气——如果预报放晴，可以恢复原计划。
   </div>
   <ul class="timeline">
     <li><span class="time">07:30</span><span class="desc">🚗 包车前往鹤峰屏山峡谷 <strong>150km·2.5h</strong>（¥400/天÷3≈¥133/人）</span></li>
@@ -445,15 +447,28 @@ const content = {
   tips: `
 <!-- ===== 天气专题 ===== -->
 <div class="info-box" style="margin-top:0;border:2px solid #ff9800;background:#fffdf7">
-  <h4>🌧️⚠️ 天气风险分析（重要！必读）</h4>
+  <h4>🌧️⚠️ 天气风险分析（重要！必读） — 2026.6.8更新</h4>
 
   <div style="font-size:12px;line-height:1.9">
-    <p><strong>结论先行：6月18-22日是恩施全年降雨最集中的时段，存在较高降雨风险。</strong></p>
+    <p><strong>结论先行：6月18-22日行程窗口全部有雨！需认真考虑备选方案。</strong></p>
     <p style="color:var(--text-muted);margin-top:4px">
-      ⚠️ 当前（2025年6月）距出发还有一年，尚无法获取2026年6月的实时天气预报。以下分析基于 <strong>2025年同期实测数据 + 历史气候规律</strong>。
-      出发前 <strong>7-15天</strong> 请访问 <a href="http://www.weather.com.cn/weather15d/101201001.shtml" target="_blank">中国天气网·恩施15天预报</a> 查看最新天气。
+      📡 数据来源：yzqxj.com 15天预报 (6.8抓取) | ⚠️ 10天预报有不确定性，出发前3天复查
     </p>
   </div>
+
+  <table style="width:100%;font-size:12px;line-height:2;margin:8px 0">
+    <tr style="background:#fff3e0;font-weight:700"><td>日期</td><td>天气</td><td>气温</td><td>风力</td><td>行程影响</td></tr>
+    <tr style="background:#ffebee"><td><strong>6/18 (Day1)</strong></td><td>🌧️ 雨</td><td>18~28℃</td><td>北风<3级</td><td>市区活动影响小，女儿城可逛室内</td></tr>
+    <tr style="background:#fff8e1"><td><strong>6/19 (Day2·端午)</strong></td><td>🌧️→⛅ 雨转多云</td><td>19~28℃</td><td>东北风<3级</td><td>⚠️ 大峡谷雨中可观云雾，但栈道湿滑</td></tr>
+    <tr style="background:#ffebee"><td><strong>6/20 (Day3)</strong></td><td>🌧️ 雨转阴</td><td>20~29℃</td><td>东风→西南风<3级</td><td>🚫 <strong>屏山峡谷极高风险！水必浑！</strong></td></tr>
+    <tr style="background:#ffebee"><td><strong>6/21 (Day4)</strong></td><td>🌧️ 雨</td><td>20~30℃</td><td>西风→南风<3级</td><td>⚠️ 石林湿滑，喷泉可能取消</td></tr>
+    <tr style="background:#fff8e1"><td><strong>6/22 (Day5)</strong></td><td>🌧️ 雨</td><td>21~35℃</td><td>南风<3级</td><td>⚠️ 闷热+雨，返程日影响最小</td></tr>
+  </table>
+
+  <div style="font-size:11px;line-height:1.8;color:var(--text-muted);margin-top:6px">
+    💡 好消息：6/19 端午当天预报"雨转多云"，大峡谷有机会见到云海。气温适中（18-29℃），不冷不热。风力均<3级，不会有大风。
+  </div>
+</div>
 
   <table style="width:100%;font-size:11px;line-height:2;margin:8px 0">
     <tr style="background:#fff3e0"><td><strong>风险项</strong></td><td><strong>数据</strong></td><td><strong>影响</strong></td></tr>
@@ -468,41 +483,28 @@ const content = {
 </div>
 
 <div class="info-box" style="border:2px solid #f44336;background:#fff5f5">
-  <h4>💧 屏山峡谷 — 下雨即毁的头号风险点</h4>
+  <h4>🚫 6/20 屏山峡谷 — 基于6.8预报：强烈建议放弃</h4>
   <div style="font-size:12px;line-height:1.9">
-    <p>屏山峡谷的"悬浮船"效果<strong>完全依赖水质清澈</strong>。一旦下雨或雨后1-3天：</p>
-    <ul style="padding-left:16px;margin:6px 0">
-      <li>🚫 雨水冲刷泥沙 → 水体变成<strong>青黄色或土黄色</strong> → "船浮空中"效果彻底消失</li>
-      <li>🚫 1900+级下行台阶湿滑，安全隐患大</li>
-      <li>🚫 光线变暗，拍照效果大打折扣</li>
-      <li>🚫 极端情况下景区可能临时关闭</li>
-    </ul>
-    <p style="margin-top:8px"><strong>判断标准</strong>：出行前查鹤峰县天气 → <span style="color:#f44336">中雨及以上/雨后1-2天 → 果断放弃屏山，启用Plan B</span></p>
-    <p>屏山峡谷最佳季节其实是<strong>8月底-10月</strong>（雨季结束，水最清透），6月去纯属"赌天气"。</p>
+    <p>根据6月8日抓取的15天预报，<strong>6月17-20日连续有雨</strong>，屏山峡谷所在的鹤峰县是历年暴雨中心（2025年同期降雨723mm）。</p>
+    <p><strong>连下4天雨后，6/20的水体几乎可以确定是浑浊的</strong>——"悬浮船"效果将完全消失，花3小时来回车程+¥210门票去看一汪黄水不值得。</p>
+    <p style="color:#d63031;font-weight:700">👉 强烈建议：将Day3改为腾龙洞（¥170）+ 下午恩施博物馆（免费）/ 加一场瑜伽按摩。</p>
   </div>
 </div>
 
 <div class="info-box" style="border:2px solid #4caf50;background:#f1f8e9">
-  <h4>🔄 雨天Plan B — 灵活调日策略</h4>
-  <div style="font-size:12px;line-height:2">
-    <p><strong>策略0：出行前48小时看天气预报</strong></p>
-    <p>如果6/18-22期间鹤峰/恩施持续中雨以上 → 考虑提前48小时免费取消屏山门票，启用替代方案。</p>
-
-    <p style="margin-top:8px"><strong>策略1：Day2与Day3弹性互换</strong></p>
-    <p>如果6/20（原定屏山日）预报晴天，6/19（原定大峡谷日）下雨 → 把屏山换到6/19晴天，大峡谷换到6/20。大峡谷雨中也能游览（云雾反而壮观），但屏山必须晴天。</p>
-
-    <p style="margin-top:8px"><strong>策略2：放弃屏山，启用替代景点</strong></p>
+  <h4>🔄 雨天调整方案（基于6.8预报）</h4>
+  <div style="font-size:12px;line-height:1.9">
+    <p><strong>推荐调整后的 Day 3 (6/20)：</strong></p>
     <table style="width:100%;font-size:11px;line-height:2;margin-top:4px">
-      <tr style="font-weight:700"><td>替代景点</td><td>类型</td><td>门票</td><td>车程</td><td>下雨影响</td></tr>
-      <tr><td>🕳️ <strong>腾龙洞</strong></td><td>亚洲最大溶洞</td><td>¥170</td><td>1.5h</td><td style="color:#4caf50">✅ 完全不受雨影响（洞内）</td></tr>
-      <tr><td>🏯 <strong>恩施州博物馆</strong></td><td>巴人文化·免费</td><td>¥0</td><td>市区</td><td style="color:#4caf50">✅ 室内，不受影响</td></tr>
-      <tr><td>🌲 <strong>鹿院坪</strong></td><td>与世隔绝古村落</td><td>¥128</td><td>1.5h</td><td style="color:#ff9800">⚠️ 小雨尚可，大雨慎入</td></tr>
-      <tr><td>🏞️ <strong>地心谷</strong></td><td>喀斯特嶂谷</td><td>免大门票</td><td>1h</td><td style="color:#ff9800">⚠️ 雨中别有风味</td></tr>
-      <tr><td>🧖 <strong>加一场按摩SPA</strong></td><td>悠悦瑜伽/九隆</td><td>¥128-188</td><td>市区</td><td style="color:#4caf50">✅ 室内享受</td></tr>
+      <tr><td>09:00</td><td>自然醒，早餐</td></tr>
+      <tr><td>10:00</td><td>🚗 前往利川腾龙洞 <strong>70km·1.2h</strong></td></tr>
+      <tr><td>11:30</td><td>🕳️ <strong>腾龙洞</strong> — 亚洲最大溶洞·激光秀·卧龙吞江·¥170/人</td></tr>
+      <tr><td>15:00</td><td>返回恩施市区</td></tr>
+      <tr><td>16:00</td><td>🏛️ 恩施州博物馆（免费·巴人文化+土家族历史）</td></tr>
+      <tr><td>18:30</td><td>晚餐不变 — 宣恩宏兴烤活鱼</td></tr>
+      <tr><td>20:00</td><td>💆 悠悦瑜伽被动拉伸 / 九隆禅意SPA（多出时间可以做个长的）</td></tr>
     </table>
-
-    <p style="margin-top:8px"><strong>策略3：屏山峡谷替换为腾龙洞</strong>（最稳妥Plan B）</p>
-    <p>腾龙洞是亚洲最大溶洞，洞内恒温14-18°C，激光秀+卧龙吞江奇观。下雨天洞里照玩不误。门票¥170 vs 屏山¥210，还能省¥40。但坦白说，震撼程度不如晴天的屏山峡谷。</p>
+    <p style="margin-top:8px;color:var(--text-muted)">屏山换腾龙洞，门票省¥40/人，车程省1小时，而且溶洞里恒温14-18°C，下雨天反而更舒服。</p>
   </div>
 </div>
 

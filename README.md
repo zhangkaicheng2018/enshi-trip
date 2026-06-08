@@ -6,7 +6,7 @@
 
 **https://zhangkaicheng2018.github.io/enshi-trip/**
 
-密码：`duanwu2026`
+密码：私聊获取
 
 ## 🗺️ 行程概览
 

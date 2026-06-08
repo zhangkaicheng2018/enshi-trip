@@ -32,7 +32,7 @@ const IMG = {
   pingshan:      'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&h=400&fit=crop&q=80',
   suobuya:       'https://images.unsplash.com/photo-1505935428862-770b6f24f629?w=800&h=400&fit=crop&q=80',
   tusi_city:     'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&h=400&fit=crop&q=80',
-  xuanen_night:  'https://images.unsplash.com/photo-1519751138087-5e0e697e38e2?w=800&h=400&fit=crop&q=80',
+  xuanen_night:  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=400&fit=crop&q=80',
   massage:       'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=400&fit=crop&q=80',
   bar:           'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&h=400&fit=crop&q=80',
   xuanen_hotel:  'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=400&fit=crop&q=80',
@@ -183,7 +183,7 @@ const content = {
   <h4>✈️ 航班确认（每天仅一班直飞，尽早锁定）</h4>
   <table style="width:100%;font-size:12px;line-height:2">
     <tr><td style="width:36px">去程</td><td><strong>MU2460</strong></td><td>6/18 (周四)</td><td>北京大兴 08:30 → 恩施 11:05</td><td>2h35m</td></tr>
-    <tr><td>回程</td><td><strong>MU2460</strong></td><td>6/22 (周一)</td><td>恩施 16:05 → 北京大兴 18:15</td><td>2h10m</td></tr>
+    <tr><td>回程</td><td><strong>MU2453</strong></td><td>6/22 (周一)</td><td>恩施 16:05 → 北京大兴 18:15</td><td>2h10m</td></tr>
   </table>
   <div style="margin-top:6px;font-size:11px;color:var(--text-muted)">⚠️ 端午旺季建议 <strong>4月底-5月初</strong> 锁定 | 往返预估 ¥2,200-2,800/人</div>
 </div>
@@ -222,7 +222,7 @@ const content = {
     <li><span class="time">09:00</span><span class="desc">🏔️ <em>七星寨</em> — 一炷香·绝壁栈道·迎客松（上行索道必买，省2h爬山）</span></li>
     <li><span class="time">12:00</span><span class="desc">景区简餐（建议自带干粮，景区溢价50%）</span></li>
     <li><span class="time">13:00</span><span class="desc"><em>云龙地缝</em> — "地球最美伤痕"，瀑布+碧潭</span></li>
-    <li><span class="time">16:00</span><span class="desc">联票 <strong>¥270/人</strong>（七星寨¥105+地缝¥50+景交¥30+索道¥105）</span></li>
+    <li><span class="time">16:00</span><span class="desc">联票 <strong>¥310/人</strong>（七星寨¥105+地缝¥50+景交¥50+索道¥105）</span></li>
     <li><span class="time">18:30</span><span class="desc"><span class="tag tag-food">晚餐</span> 舅母子 — 腊蹄子火锅+酸豆角炒肥肠，人均¥70 🫔 加粽子过端午！</span></li>
     <li><span class="time">20:00</span><span class="desc"><span class="tag tag-massage">按摩</span> 💆 <strong>九隆国际养生</strong>（施州大道469号）<br><em style="font-size:11px;color:#c62828">禅意SPA · 中式轻柔推拿 · 经络疏通｜60min/¥138｜轻奢新中式环境·静谧私密</em></span></li>
     <li><span class="time">22:00</span><span class="desc"><span class="tag tag-bar">酒吧</span> 🍻 <strong>海伦司Helens</strong>（新天地）人均¥46 | 或 <strong>袋鼠手工精酿</strong> 续摊</span></li>
@@ -262,7 +262,7 @@ const content = {
   <ul class="timeline">
     <li><span class="time">09:00</span><span class="desc">😴 稍晚起床，酒店早餐后 <strong>退房</strong>（行李放车上）</span></li>
     <li><span class="time">10:00</span><span class="desc">🚗 包车出发，恩施→梭布垭石林 <strong>54km·1h</strong>（¥400/天÷3≈¥133/人）</span></li>
-    <li><span class="time">11:00</span><span class="desc">🪨 <em>梭布垭石林</em> — 4.6亿年前海底世界（门票 <strong>¥98</strong>，游览2-3h）</span></li>
+    <li><span class="time">11:00</span><span class="desc">🪨 <em>梭布垭石林</em> — 4.6亿年前海底世界（门票 <strong>¥78</strong>+景交¥30=<strong>¥108</strong>，游览2-3h）</span></li>
     <li><span class="time">14:00</span><span class="desc">景区附近午餐，之后🚗 直奔宣恩县城 <strong>40km·1h</strong></span></li>
     <li><span class="time">15:30</span><span class="desc"><span class="tag tag-hotel">入住</span> 🏨 <strong>合歡花河景民宿</strong>（⭐9.9·2025新开·贡水河景大床房）<br>或 <strong>惹溪景城民宿</strong>（⭐9.7·江景套房·楼下烤活鱼一条街）<br>💰 河景房约 ¥180-280/晚</span></li>
     <li><span class="time">16:30</span><span class="desc">宣恩漫步 — 墨达楼·钟楼·民族风情街拍照</span></li>
@@ -291,7 +291,7 @@ const content = {
     <li><span class="time">12:00</span><span class="desc">🚗 宣恩出发→恩施方向 <strong>50km·1h</strong></span></li>
     <li><span class="time">13:00</span><span class="desc"><span class="tag tag-food">午餐</span> 赵氏土家风味（火车站附近）— 炒腊肉，人均¥50</span></li>
     <li><span class="time">14:00</span><span class="desc"><span class="tag tag-flight">去机场</span> 午餐后前往恩施许家坪机场（距火车站打车¥20/15min）</span></li>
-    <li><span class="time">16:05</span><span class="desc"><span class="tag tag-flight">返程</span> ✈️ MU2460 恩施起飞</span></li>
+    <li><span class="time">16:05</span><span class="desc"><span class="tag tag-flight">返程</span> ✈️ MU2453 恩施起飞</span></li>
     <li><span class="time">18:15</span><span class="desc">🛬 抵达北京大兴机场，各回各家 🎉</span></li>
   </ul>
   <div style="margin-top:10px;padding:10px;background:#f5fff5;border-radius:8px;font-size:12px;line-height:1.8">
@@ -331,13 +331,13 @@ const content = {
     <tr><td>✈️ 往返机票</td><td style="text-align:right">¥2,500</td><td style="font-size:11px;color:var(--text-muted)">端午旺季预估，提前60天订</td></tr>
     <tr><td>🏨 住宿（4晚）</td><td style="text-align:right">¥967</td><td style="font-size:11px;color:var(--text-muted)">金楠府3晚+宣恩河景民宿1晚</td></tr>
     <tr><td>🚗 当地交通</td><td style="text-align:right">¥420</td><td style="font-size:11px;color:var(--text-muted)">包车4天(≈¥1,160÷3)+打车</td></tr>
-    <tr><td>🎫 门票</td><td style="text-align:right">¥713</td><td style="font-size:11px;color:var(--text-muted)">大峡谷270+屏山210+土司城45+石林98+竹筏90</td></tr>
+    <tr><td>🎫 门票</td><td style="text-align:right">¥763</td><td style="font-size:11px;color:var(--text-muted)">大峡谷310+屏山210+土司城45+石林108+竹筏90</td></tr>
     <tr><td>🍜 餐饮</td><td style="text-align:right">¥1,000</td><td style="font-size:11px;color:var(--text-muted)">≈¥200/天×5天</td></tr>
     <tr><td>💆 按摩SPA×2</td><td style="text-align:right">¥260</td><td style="font-size:11px;color:var(--text-muted)">九隆禅意SPA¥138+影院足道¥120</td></tr>
     <tr><td>🍺 酒吧放松×3</td><td style="text-align:right">¥300</td><td style="font-size:11px;color:var(--text-muted)">≈¥100/晚×3</td></tr>
     <tr><td>🛶 宣恩夜间</td><td style="text-align:right">¥120</td><td style="font-size:11px;color:var(--text-muted)">竹筏90+坝坝茶30</td></tr>
     <tr><td>🎁 伴手礼+杂费</td><td style="text-align:right">¥500</td><td style="font-size:11px;color:var(--text-muted)">茶叶+腊肉+保险+零食</td></tr>
-    <tr class="total-row"><td>🎯 合计</td><td style="text-align:right">≈¥6,780</td><td>建议预算 ¥6,500-7,500/人</td></tr>
+    <tr class="total-row"><td>🎯 合计</td><td style="text-align:right">≈¥6,830</td><td>建议预算 ¥6,500-7,500/人</td></tr>
   </table>
   <div style="font-size:11px;color:var(--text-muted);margin-top:6px">
     💡 若选土司溪畔语酒店（亲子房≈¥300/晚）替代金楠府，可再省 ≈¥250/人，总预算约 <strong>¥6,500/人</strong>
@@ -449,6 +449,10 @@ const content = {
 
   <div style="font-size:12px;line-height:1.9">
     <p><strong>结论先行：6月18-22日是恩施全年降雨最集中的时段，存在较高降雨风险。</strong></p>
+    <p style="color:var(--text-muted);margin-top:4px">
+      ⚠️ 当前（2025年6月）距出发还有一年，尚无法获取2026年6月的实时天气预报。以下分析基于 <strong>2025年同期实测数据 + 历史气候规律</strong>。
+      出发前 <strong>7-15天</strong> 请访问 <a href="http://www.weather.com.cn/weather15d/101201001.shtml" target="_blank">中国天气网·恩施15天预报</a> 查看最新天气。
+    </p>
   </div>
 
   <table style="width:100%;font-size:11px;line-height:2;margin:8px 0">

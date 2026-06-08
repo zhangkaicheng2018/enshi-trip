@@ -235,23 +235,47 @@ const content = {
 <div class="day-card day3">
   <div class="day-header">
     <div class="day-num">3</div>
-    <div><div class="day-title">屏山峡谷 · 中国仙本那 💎</div><div class="day-date">6月20日 周六</div></div>
+    <div><div class="day-title">双选项 · 看天气二选一 🌤️</div><div class="day-date">6月20日 周六</div></div>
   </div>
-  ${imgCard(IMG.pingshan,'屏山峡谷 — ⚠️ 6/20预报雨转阴，水大概率浑浊，强烈建议改为备选方案')}
-  <div style="margin-bottom:10px;padding:10px 12px;background:#ffebee;border-left:4px solid #f44336;border-radius:4px;font-size:12px;line-height:1.7">
-    🚫 <strong>根据6月8日15天预报，6/20有雨转阴，屏山峡谷水体大概率浑浊，悬浮船效果将大打折扣。</strong><br>
-    <strong>建议改为</strong>：🕳️ <strong>腾龙洞</strong>（亚洲最大溶洞·¥170·洞内恒温14-18°C·不受雨影响·激光秀+卧龙吞江）<br>
-    如果坚持去屏山，出发前3天再复查鹤峰天气——如果预报放晴，可以恢复原计划。
+  <div style="margin-bottom:12px;padding:10px 12px;background:#fffbf0;border:2px solid #ff9800;border-radius:8px;font-size:12px;line-height:1.7">
+    ⚠️ <strong>出发前3天复查鹤峰天气，根据预报选择：</strong>晴天/多云 → 选 A．屏山峡谷 | 有雨/刚下过雨 → 选 B．腾龙洞
   </div>
+
+  <!-- 选项 A: 屏山峡谷 -->
+  <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:14px;margin-bottom:10px">
+    <h5 style="color:#15803d;margin-bottom:6px">🟢 选项 A — 屏山峡谷（晴天/多云时选）</h5>
+    ${imgCard(IMG.pingshan,'屏山峡谷 — 悬浮船·蒂芙尼蓝玻璃水（仅限水清时）')}
+    <ul class="timeline">
+      <li><span class="time">07:30</span><span class="desc">🚗 包车前往鹤峰屏山峡谷 <strong>150km·2.5h</strong></span></li>
+      <li><span class="time">10:00</span><span class="desc">💧 <em>屏山峡谷</em> — 门票 <strong>¥210/人</strong> | 悬浮船自拍¥20-30<br>⚠️ 11:00-13:00 光线最佳，"玻璃海"悬浮效果最梦幻</span></li>
+      <li><span class="time">14:00</span><span class="desc">鹤峰午餐 → 返程（2.5h）</span></li>
+    </ul>
+  </div>
+
+  <!-- 选项 B: 腾龙洞 -->
+  <div style="background:#f5f3ff;border:2px solid #8b5cf6;border-radius:10px;padding:14px;margin-bottom:10px">
+    <h5 style="color:#6d28d9;margin-bottom:6px">🟣 选项 B — 腾龙洞（雨天时选·推荐）</h5>
+    ${imgCard(IMG.grand_canyon,'腾龙洞 — 亚洲最大溶洞·恒温14-18°C·不受雨影响')}
+    <ul class="timeline">
+      <li><span class="time">09:00</span><span class="desc">😴 自然醒，悠闲早餐（比去屏山多睡1.5h）</span></li>
+      <li><span class="time">10:00</span><span class="desc">🚗 包车前往利川腾龙洞 <strong>70km·1.2h</strong></span></li>
+      <li><span class="time">11:30</span><span class="desc">🕳️ <em>腾龙洞</em> — 亚洲最大溶洞·门票 <strong>¥170/人</strong><br>激光秀+卧龙吞江奇观·洞内恒温14-18°C·完全不怕下雨</span></li>
+      <li><span class="time">15:00</span><span class="desc">返回恩施市区</span></li>
+      <li><span class="time">16:00</span><span class="desc">🏛️ <em>恩施州博物馆</em>（免费·巴人文化+土家族历史）<br>或去恩施玉露茶馆品茶歇脚</span></li>
+    </ul>
+  </div>
+
+  <!-- 共同部分 -->
+  <div style="padding:8px 0;font-size:12px;color:var(--text-muted);text-align:center">⬇ 以下行程两个选项通用 ⬇</div>
   <ul class="timeline">
-    <li><span class="time">07:30</span><span class="desc">🚗 包车前往鹤峰屏山峡谷 <strong>150km·2.5h</strong>（¥400/天÷3≈¥133/人）</span></li>
-    <li><span class="time">10:00</span><span class="desc"><span class="tag tag-scenic">核心</span> 💧 <em>屏山峡谷</em> — "中国仙本那"<br>门票 <strong>¥210/人</strong>（含船票）| 透明橡皮艇¥60 | 悬浮船自拍¥20-30<br>⚠️ 黄金光线 <strong>11:00-13:00</strong>，阳光直射谷底"玻璃海"最梦幻</span></li>
-    <li><span class="time">14:00</span><span class="desc">鹤峰县城午餐 / 景区门口土家小吃</span></li>
-    <li><span class="time">15:30</span><span class="desc">🚗 返程回市区（约2.5h）</span></li>
     <li><span class="time">18:30</span><span class="desc"><span class="tag tag-food">晚餐</span> 宣恩宏兴烤活鱼（恩施市区店）— 香辣+酸菜双拼，人均¥70</span></li>
-    <li><span class="time">20:00</span><span class="desc"><span class="tag tag-massage">按摩</span> 💆 <strong>魅力无限·影院足道</strong>（硒都茶城）<br><em style="font-size:11px;color:#c62828">边按摩边观影 · 轻柔足道 · 兄弟三人不尴尬｜人均¥80-120</em></span></li>
-    <li><span class="time">22:00</span><span class="desc">清江边散步消食，或回酒店早睡（两天爬山，今晚悠着点）</span></li>
+    <li><span class="time">20:00</span><span class="desc"><span class="tag tag-massage">按摩</span> 💆 <strong>魅力无限·影院足道</strong>（硒都茶城）<br><em style="font-size:11px;color:#c62828">边按摩边观影 · 轻柔足道 · 人均¥80-120</em></span></li>
+    <li><span class="time">22:00</span><span class="desc">清江边散步消食，或回酒店早睡</span></li>
   </ul>
+  <div style="margin-top:8px;padding:8px 12px;background:#e8f5e9;border-radius:6px;font-size:11px;line-height:1.7">
+    💡 <strong>费用对比</strong>：A屏山¥210/人 vs B腾龙洞¥170/人，B省¥40+多睡1.5h+少坐2h车。<br>
+    💡 <strong>决策时机</strong>：6月17日晚看鹤峰县6/20预报，晴天选A，有雨选B。
+  </div>
 </div>
 
 <!-- ===== DAY 4 ===== -->
